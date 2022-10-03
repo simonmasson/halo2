@@ -27,7 +27,7 @@ pub struct Accumulator<C: CurveAffine, E: EncodedChallenge<C>> {
     /// A vector of challenges u_0, ..., u_{k - 1} sampled by the verifier, to
     /// be used in computing G'_0.
     pub u_packed: Vec<E>,
-}
+} 
 
 impl<'a, C: CurveAffine, E: EncodedChallenge<C>> Guard<'a, C, E> {
     /// Lets caller supply the challenges and obtain an MSM with updated
