@@ -65,9 +65,6 @@ impl<'a, C: CurveAffine, E: EncodedChallenge<C>> Guard<'a, C, E> {
         best_multiexp(&s, &self.msm.params.g).to_affine()
     }
 
-    pub fn aggregate(&mut self, g2: Guard<'a, C, E>) {
-        
-    }
 }
 
 /// Checks to see if the proof represented within `transcript` is valid, and a
@@ -160,7 +157,7 @@ fn compute_b<F: Field>(x: F, u: &[F]) -> F {
 }
 
 /// Computes the coefficients of $g(X) = \prod\limits_{i=0}^{k-1} (1 + u_{k - 1 - i} X^{2^i})$.
-fn compute_s<F: Field>(u: &[F], init: F) -> Vec<F> {
+pub fn compute_s<F: Field>(u: &[F], init: F) -> Vec<F> {
     assert!(!u.is_empty());
     let mut v = vec![F::zero(); 1 << u.len()];
     v[0] = init;
