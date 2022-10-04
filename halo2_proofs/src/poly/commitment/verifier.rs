@@ -30,6 +30,12 @@ pub struct Accumulator<C: CurveAffine, E: EncodedChallenge<C>> {
 } 
 
 impl<'a, C: CurveAffine, E: EncodedChallenge<C>> Guard<'a, C, E> {
+
+    /// todo doc
+    pub fn get_u(self) -> Vec<C::Scalar> {
+        self.u
+    }
+
     /// Lets caller supply the challenges and obtain an MSM with updated
     /// scalars and points.
     pub fn use_challenges(mut self) -> MSM<'a, C> {
@@ -57,6 +63,10 @@ impl<'a, C: CurveAffine, E: EncodedChallenge<C>> Guard<'a, C, E> {
         let s = compute_s(&self.u, C::Scalar::one());
 
         best_multiexp(&s, &self.msm.params.g).to_affine()
+    }
+
+    pub fn aggregate(&mut self, g2: Guard<'a, C, E>) {
+        
     }
 }
 
