@@ -12,7 +12,8 @@ use crate::{
 };
 
 mod prover;
-mod verifier;
+/// Verifier is public
+pub mod verifier;
 
 pub use prover::create_proof;
 pub use verifier::verify_proof;

@@ -15,7 +15,8 @@ use std::ops::{Add, AddAssign, Mul, MulAssign};
 
 mod msm;
 mod prover;
-mod verifier;
+/// Verifier is public
+pub mod verifier;
 
 pub use msm::MSM;
 pub use prover::create_proof;
